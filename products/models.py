@@ -1,6 +1,6 @@
 from django.db import models
 
-from categories.models import Category
+from categories.models import Category, Size
 
 
 class Colour(models.Model):
@@ -9,8 +9,11 @@ class Colour(models.Model):
 
 class Product(models.Model):
     name = models.CharField(max_length=60)
-    colour = models.ForeignKey(Colour, on_delete=models.CASCADE)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    sizes_available = models.ManyToManyField(Sizes)
+    colour = models.ForeignKey(Colour)
+    category = models.ForeignKey(Category)
+    sizes_available = models.ManyToManyField(Size)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     weight = models.DecimalField(max_digits=6, decimal_places=2)
+
+    def __str__(self):
+        return self.name

@@ -1,6 +1,19 @@
 from django.db import models
 
 
+class Category(models.Model):
+    name = models.CharField(max_length=60)
+    parent = models.ForeignKey(
+        'self',
+        null=True,
+        blank=True,
+    )
+    main_category = models.BooleanField(default=False)
+
+    def __str__(self):
+        return self.name
+
+
 class Size(models.Model):
     category = models.ForeignKey(
         Category,
@@ -9,11 +22,6 @@ class Size(models.Model):
     )
     uk_size = models.CharField(max_length=4)
 
+    def __str__(self):
+        return self.name
 
-class Category(models.Model):
-    name = models.CharField(max_length=60)
-    parent = models.ForeignKey(
-        'self',
-        null=True,
-        blank=True,
-    )

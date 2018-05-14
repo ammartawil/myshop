@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+</head>
+<body>
+    <h1>{{ product.name }}</h1>
+    <ul>
+        <li> Available in sizes:
+            {% for size in product.sizes_available.all %}
+                {{ size }},
+            {% endfor %}
+        </li>
+        <li> Available in colours:
+            {% for colour in product.colour.all %}
+                {{ colour }},
+            {% endfor %}
+        </li>
+        <li>{{ product.price }}</li>
+    </ul>
+</body>
+</html>

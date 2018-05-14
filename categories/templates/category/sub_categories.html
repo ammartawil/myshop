@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ category|title }}</title>
+</head>
+<body>
+    <h1>{{ category|title }}</h1>
+    <ul>
+        {% for sub_category in category_list %}
+            <li>
+                <a href={% url "view-category" sub_category.name|slugify %}>{{ sub_category.name }}</a>
+            </li>
+        {%  endfor %}
+        {% for product in product_List %}
+            <li>
+                <a href={% url "view-product" product.name|slugify %}>{{ product.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

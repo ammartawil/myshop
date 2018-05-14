@@ -3,10 +3,10 @@
 from __future__ import absolute_import, division, print_function, unicode_literals
 
 
-from django.conf.urls import url, include
+from django.conf.urls import url
 
 from home import views
 
 urlpatterns = [
-    url(r'^$', views.homepage),
+    url(r'^$', views.homepage, name='homepage'),
 ]

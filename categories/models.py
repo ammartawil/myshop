@@ -3,6 +3,7 @@ from django.db import models
 
 class Category(models.Model):
     name = models.CharField(max_length=60)
+    slug = models.SlugField(max_length=60)
     parent = models.ForeignKey(
         'self',
         null=True,
@@ -23,5 +24,5 @@ class Size(models.Model):
     uk_size = models.CharField(max_length=4)
 
     def __str__(self):
-        return self.name
+        return self.uk_size
 

@@ -7,5 +7,5 @@ from django.conf.urls import url
 from categories import views
 
 urlpatterns = [
-    url(r'^[\w]+$', views.category)
+    url(r'^(?P<category>[\w-]+)$', views.category, name='view-category'),
 ]

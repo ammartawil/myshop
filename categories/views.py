@@ -5,7 +5,6 @@ from products.models import Product
 
 
 def category(request, category):
-    # import ipdb; ipdb.set_trace()
     category_list = Category.objects.filter(parent__name=category)
     product_list = Product.objects.filter(category__slug=category)
     return render(

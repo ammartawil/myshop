@@ -8,5 +8,5 @@ from products import views
 
 
 urlpatterns = [
-    url(r'^(?P<product>[\w-]+)$', views.product_view, name='view-product'),
+    url(r'^(?P<product_slug>[\w-]+)$', views.product_view, name='view-product'),
 ]

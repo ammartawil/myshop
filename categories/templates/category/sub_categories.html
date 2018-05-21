@@ -14,7 +14,7 @@
         {%  endfor %}
         {% for product in product_List %}
             <li>
-                <a href={% url "view-product" product.name|slugify %}>{{ product.name }}</a>
+                <a href={% url "view-product" product.slug %}>{{ product.name }}</a>
             </li>
         {% endfor %}
     </ul>

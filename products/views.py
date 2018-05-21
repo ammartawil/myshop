@@ -1,8 +1,14 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 
-from products.models import Product
+from .models import Product
+from .forms import ProductForm
 
 
-def product_view(request, product):
-    product_details = Product.objects.get(slug=product)
-    return render(request, 'product/product.html', {'product': product_details})
+def product_view(request, product_slug):
+    product = Product.objects.get(slug=product_slug)
+    if request.method == 'POST':
+        return HttpResponseRedirect('/thanks/')
+    else:
+        form = ProductForm(product_slug=product_slug)
+
+    return render(request, 'product/product.html', {'product': product, 'form': form})
